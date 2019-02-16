@@ -64,14 +64,15 @@ export default {
   },
   computed: {
     icon() {
-      if (this.options.iconModule) {
-        let icon = this.options.iconModule.icon(this.node.icon)
-        if (!icon) icon = this.options.iconModule.icon(this.node.type)
+      const _iconModule = this.options.iconModule
+      if (_iconModule) {
+        let icon = _iconModule.icon(this.node.icon)
+        if (!icon) icon = _iconModule.icon(this.node.type)
         if (!icon) {
           if (this.node.children) {
-            icon = this.options.iconModule.icon('folder')
+            icon = _iconModule.icon('folder')
           } else {
-            icon = this.options.iconModule.icon('file')
+            icon = _iconModule.icon('file')
           }
         }
         return icon
